@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+        padding: 40px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    form {
+        background-color: #fff;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        box-sizing: border-box;
+    }
+
+    form label {
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+    }
+
+    button {
+        width: 100%;
+        background-color: #28a745;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 15px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #218838;
+    }
+</style>
+
+</head>
+<body>
+<h1>Add items</h1>
+<form action="../additems_code/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label for="iname">Item Name</label>
+    <input type="text" name="Iname" id="iname">
+
+    <label for="iquantity">Item Quantity</label>
+    <input type="number" name="Iquantity" id="iquantity">
+
+    <label for="iprice">Item Price</label>
+    <input type="number" name="Iprice" id="iprice">
+
+    <label for="ifile">Item Picture</label>
+    <input type="file" name="Ifile" id="ifile">
+
+    <button type="submit">Done</button>
+</form>
+
+<!--<form action="../additems_code/" method="post" enctype="multipart/form-data">-->
+<!--    {% csrf_token %}-->
+<!--    Item Name<input type="text" name="Iname"><br>-->
+<!--    Item Quantity<input type="number" name="Iquantity"><br>-->
+<!--    Item Price<input type="number" name="Iprice"><br>-->
+<!--    Item Picture<input type="file" name="Ifile"><br>-->
+<!--    <button>done</button>-->
+</form>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Edit Item</title>
+    <style>
+        /* Basic reset and font */
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container box */
+        .edit-container {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="file"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            margin-top: 25px;
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .edit-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="edit-container">
+        <h1>✏️ Edit Item</h1>
+        <form action="../orderitems_update/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ show.id }}">
+
+            <label for="name">Item Name</label>
+            <input type="text" id="name" name="name" value="{{ show.ItemName }}" required>
+
+            <label for="quantity">Item Quantity</label>
+            <input type="number" id="quantity" name="quantity" value="{{ show.Itemquantity }}" required>
+
+            <label for="price">Item Price</label>
+            <input type="number" id="price" name="price" value="{{ show.Itemprice }}" required>
+
+            <label for="file">Item Picture</label>
+            <input type="file" id="file" name="file">
+
+            <button type="submit">Update Item</button>
+        </form>
+    </div>
+</body>
+</html>

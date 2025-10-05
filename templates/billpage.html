@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generated Bill</title>
+    <style>
+        /* Base styling */
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            text-align: right;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        .customer-details {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-left: 5px solid #007bff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .customer-details h3 {
+            margin: 5px 0;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .no-print {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.no-print:hover {
+    background-color: #138496;
+}
+
+
+        /* Print-friendly */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .no-print {
+                display: none;
+            }
+
+            table {
+                box-shadow: none;
+            }
+
+            .customer-details {
+                box-shadow: none;
+                border: none;
+                background: transparent;
+            }
+
+            h2 {
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🧾 Bill Summary</h1>
+
+    {% for x in show %}
+    <div class="customer-details">
+        <h3><strong>Name:</strong> {{ x.customername }}</h3>
+        <h3><strong>Mobile No:</strong> {{ x.customermobile }}</h3>
+    </div>
+    {% endfor %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Price (₹)</th>
+                <th>Total (₹)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.ItemName }}</td>
+                <td>{{ item.Itemquantity }}</td>
+                <td>{{ item.Itemprice }}</td>
+                <td>
+                    {{ item.Itemquantity|floatformat:2|add:"0"|floatformat:2|add:"0"|floatformat:2|floatformat:2|add:"0"|floatformat:2|add:"0"|floatformat:2|add:"0"|floatformat:2 }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Total Price: ₹{{ total_price }}</h2>
+<button class="no-print" onclick="window.print()">🖨️ Print Bill</button>
+
+</body>
+</html>

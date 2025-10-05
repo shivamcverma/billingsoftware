@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    {% load static %}
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+<!--    display: flex;-->
+<!--    justify-content: center;-->
+<!--    align-items: center;-->
+<!--    height: 100vh;-->
+}
+
+.dashboard-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.dashboard-container h1 {
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.nav-links {
+    display: flex;
+    align-item:center;
+    justify-content:center;
+    gap: 15px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+        <div class="dashboard-container">
+        <h1>📊 Dashboard</h1>
+
+        <div class="nav-links">
+            <a href="../additems/" class="btn">➕ Add Items</a>
+            <a href="../orderitems/" class="btn">🛒 Order Items</a>
+        </div>
+    </div>
+</body>
+</html>
