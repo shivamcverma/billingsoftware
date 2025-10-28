@@ -23,7 +23,7 @@ from myapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.adminlogin),
+    path('',views.index),
     path('logincode/', views.logincode),
     path('dashboard/', views.dashboard),
     path('additems/',views.additems),
